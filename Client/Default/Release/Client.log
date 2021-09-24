@@ -1,0 +1,62 @@
+﻿  stdafx.cpp
+  Back_Logo.cpp
+..\Codes\Back_Logo.cpp(52): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Blade.cpp
+  DamageScreen.cpp
+..\Codes\DamageScreen.cpp(184): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Door.cpp
+..\Codes\Door.cpp(80): warning C4244: '초기화 중': 'Engine::_double'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Dynamic_Camera.cpp
+  Effect.cpp
+..\Codes\Effect.cpp(22): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Effect_Blood.cpp
+  Effect_Resonance.cpp
+  Effect_SpeedyMove.cpp
+  Gaurd_UI.cpp
+  KeyMgr.cpp
+  Loading.cpp
+  MainApp.cpp
+..\Codes\MainApp.cpp(82): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Codes\MainApp.cpp(83): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Codes\MainApp.cpp(84): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Codes\MainApp.cpp(85): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Map_Object.cpp
+  Map_Object_List.cpp
+  MyMouse.cpp
+  NameCard.cpp
+..\Codes\NameCard.cpp(163): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player.cpp
+..\Codes\Player.cpp(494): warning C4305: '=': 'double'에서 'Engine::_float'(으)로 잘립니다.
+..\Codes\Player.cpp(1021): warning C4244: '초기화 중': 'Engine::_double'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player_HPBar.cpp
+..\Codes\Player_HPBar.cpp(141): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player_HPBar2.cpp
+..\Codes\Player_HPBar2.cpp(150): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  컴파일하고 있습니다...
+  Scene_Logo.cpp
+  Scene_Stage.cpp
+  Skybox.cpp
+  Static_Camera.cpp
+..\Codes\Static_Camera.cpp(166): warning C4244: '초기화 중': 'Engine::_double'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Terrain.cpp
+  Trail_LongBlade.cpp
+..\Codes\Trail_LongBlade.cpp(89): warning C4244: '초기화 중': 'float'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Codes\Trail_LongBlade.cpp(90): warning C4244: '초기화 중': 'float'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  UI.cpp
+..\Codes\UI.cpp(141): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Zecallion.cpp
+..\Codes\Zecallion.cpp(89): warning C4805: '!=': 연산에 'CZecallion::BOSS_STATE' 형식과 'Engine::_bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+..\Codes\Zecallion.cpp(439): warning C4244: '초기화 중': 'Engine::_double'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ZecallionAxe.cpp
+  Zecallion_HPBar.cpp
+..\Codes\Zecallion_HPBar.cpp(142): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Zecallion_HPBar2.cpp
+..\Codes\Zecallion_HPBar2.cpp(152): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Zecallion_HPBar_Font.cpp
+..\Codes\Zecallion_HPBar_Font.cpp(142): warning C4244: '인수': 'const unsigned int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Client.cpp
+  코드를 생성하고 있습니다.
+  All 671 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  Client.vcxproj -> C:\Jusin\78_3D\MyClient\FrameWork_Mabi_0108_1700\FrameWork_Mabi\Client\Default\..\Bin\Client.exe
+  Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

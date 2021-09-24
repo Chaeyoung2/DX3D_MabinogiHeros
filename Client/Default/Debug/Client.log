@@ -1,0 +1,11 @@
+﻿  Player.cpp
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\client\codes\player.cpp(517): warning C4305: '=': 'double'에서 'Engine::_float'(으)로 잘립니다.
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\client\codes\player.cpp(1058): warning C4244: '초기화 중': 'Engine::_double'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MainApp.cpp
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\client\codes\mainapp.cpp(89): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\client\codes\mainapp.cpp(90): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\client\codes\mainapp.cpp(91): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\client\codes\mainapp.cpp(92): warning C4244: '=': 'double'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  Client.vcxproj -> C:\Jusin\78_3D\MyClient\FrameWork_Mabi_0119_0200\FrameWork_Mabi_0108_1700\FrameWork_Mabi\Client\Default\..\Bin\Client.exe
+  Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

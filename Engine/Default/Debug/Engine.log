@@ -1,0 +1,50 @@
+﻿  AnimationCtrl.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  VIBuffer.cpp
+  Transform.cpp
+  Trail_Buffer.cpp
+  Timer_Manager.cpp
+  Timer.cpp
+  Texture.cpp
+  Terrain_Buffer.cpp
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\engine\codes\terrain_buffer.cpp(71): warning C4244: '인수': 'unsigned long'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Shader.cpp
+  Screen_Texture.cpp
+  Scene.cpp
+  Renderer.cpp
+  Rect_Texture.cpp
+  Picking.cpp
+  Object_Manager.cpp
+  Navigation.cpp
+  Mesh_Static.cpp
+  Mesh_Dynamic.cpp
+  Mesh.cpp
+  Management.cpp
+  Layer.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Input_Device.cpp
+  Information.cpp
+  HierarchyLoader.cpp
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\engine\codes\hierarchyloader.cpp(190): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 'strcpy' 선언을 참조하십시오.
+  Graphic_Device.cpp
+  GameObject.cpp
+  Frustum.cpp
+  Frame_Manager.cpp
+  Frame.cpp
+  Cube_Texture.cpp
+  Component_Manager.cpp
+  Component.cpp
+  Collision_Sphere.cpp
+  Collision.cpp
+  Cell.cpp
+c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\engine\codes\cell.cpp(48): warning C4927: 변환이 잘못되었습니다. 사용자 정의 변환이 암시적으로 두 번 이상 적용되었습니다.
+  c:\jusin\78_3d\myclient\framework_mabi_0119_0200\framework_mabi_0108_1700\framework_mabi\engine\codes\cell.cpp(48): note: 'D3DXVECTOR3::D3DXVECTOR3(const FLOAT *)' 생성자를 호출하는 동안
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3dx9math.inl(270): note: 'D3DXVECTOR3::D3DXVECTOR3' 선언을 참조하십시오.
+  Camera.cpp
+  Base.cpp
+  코드를 생성하고 있습니다...
+  Engine.vcxproj -> C:\Jusin\78_3D\MyClient\FrameWork_Mabi_0119_0200\FrameWork_Mabi_0108_1700\FrameWork_Mabi\Engine\Default\..\Bin\Engine.dll
+  Engine.vcxproj -> ..\Bin\Engine.pdb (Full PDB)

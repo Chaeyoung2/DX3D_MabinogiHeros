@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99.Default">
+      <UniqueIdentifier>{075d326b-b1e7-4c7c-94e3-8d04a93619f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.MainApp">
+      <UniqueIdentifier>{dd9a6272-6418-45a7-afdb-209eb9a6761e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98.Headers">
+      <UniqueIdentifier>{4e4960f0-30b0-4af3-9201-7eda1e2db005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Scene">
+      <UniqueIdentifier>{667693d2-f5f5-44ab-afc1-087c3015c9f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject">
+      <UniqueIdentifier>{a38591d3-96b3-4ea1-8c99-3d3055f0dc32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Logo">
+      <UniqueIdentifier>{3918438e-c8e3-4613-879d-98c8fd7eeb6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage">
+      <UniqueIdentifier>{fc3c79d0-0669-476a-a005-98e3880354bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Scene\00.Scene_Logo">
+      <UniqueIdentifier>{17f5aa3f-8fb1-4e94-8e17-46b64604c4be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Scene\01.Scene_Stage">
+      <UniqueIdentifier>{62edf5ee-5114-48f2-ae40-eb12584076b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Scene\99.Loading">
+      <UniqueIdentifier>{461f0c1b-fcf0-4602-a281-85967e5bd94a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\00.SkyBox">
+      <UniqueIdentifier>{637a7c4c-00b5-4cf1-8a98-61ccb9dc67b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\01.Terrain">
+      <UniqueIdentifier>{c3241c1a-8cfd-4348-8cf2-bfd14bc584d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\02.MapObject_List">
+      <UniqueIdentifier>{089484cf-3608-4eff-86dd-9846bc588791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\02.MapObject_List\MapObject">
+      <UniqueIdentifier>{dab4dbe3-d811-4dd0-8373-9b0ec8dc7e0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Static">
+      <UniqueIdentifier>{6c0abbae-366d-4aae-82e8-0e64169b5f57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Static\Dynamic_Camera">
+      <UniqueIdentifier>{162713fa-378c-49b4-a128-da306ddd97c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Static\MyMouse">
+      <UniqueIdentifier>{8f56f0f4-01a7-44fa-81d6-45101529498e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\03.UI">
+      <UniqueIdentifier>{11a53812-e822-439b-b584-7dd8293c3e5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\04.Player">
+      <UniqueIdentifier>{016e417f-8dcf-428d-85cc-50854f734b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\05.Zecallion">
+      <UniqueIdentifier>{43c85df6-005e-4c59-bf76-7207c7132326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect">
+      <UniqueIdentifier>{ad0312cd-16d4-4e6e-95d8-e5808f2ef01c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\05.Zecallion\ZecallionEx">
+      <UniqueIdentifier>{f6919f13-9e9c-4842-b3ae-f5e20098f683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\04.Player\Blade">
+      <UniqueIdentifier>{c1c3db29-8b12-435f-a401-176baf9c1a62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Static\Static_Camera">
+      <UniqueIdentifier>{7fe967e0-ee9b-451b-817b-49368c2d2f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Managers">
+      <UniqueIdentifier>{f7a1edde-9099-4076-96e5-3c76b2c6cdf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Managers\Key_Manager">
+      <UniqueIdentifier>{12aab0d8-b133-4482-8618-c3047aa3cb1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="96.Shaders">
+      <UniqueIdentifier>{2bb96a40-18ac-47d7-a7ea-ed9a71747a64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\00.Player_Move">
+      <UniqueIdentifier>{bc028a53-66b8-498e-b4e9-e64e24bffbd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\00.Player_Move\Effect_SpeedyMove">
+      <UniqueIdentifier>{cee3355a-b95e-42b2-b231-e4cb614de039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\07.Door">
+      <UniqueIdentifier>{5bfb9420-8ab5-4b1a-b565-8ba9cbc709c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\08.Trail">
+      <UniqueIdentifier>{2b9e392c-96f0-4a42-b40f-d80a5d92723d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\08.Trail\Trail_LongBlade">
+      <UniqueIdentifier>{b8d4a335-f905-4409-8a95-57d177e21bf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\02.Effect_Blood">
+      <UniqueIdentifier>{fbe8c001-6460-48ef-adc1-862f0f34f346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\01.Player_Skill">
+      <UniqueIdentifier>{1a3d9bef-7541-4770-ae01-0b19b8fc750f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\01.Player_Skill\00.Resonance">
+      <UniqueIdentifier>{53e8a872-e52b-472c-99a1-88d1d7788228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\03.UI\00.Player_HPBar">
+      <UniqueIdentifier>{c8a6c4f4-93c9-44cd-af00-28338499d264}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\03.UI\01.Zecallion_HPBar">
+      <UniqueIdentifier>{8c810a37-bb05-4828-9822-d3fbbaa55b87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\03.UI\02.NameCard">
+      <UniqueIdentifier>{6e949913-8cf0-4643-a97e-94cae76f1d34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\03.UI\03.Gaurd">
+      <UniqueIdentifier>{234ba785-18bf-43b8-90ec-e3b5861a4cb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\03.UI\04.DamageScreen">
+      <UniqueIdentifier>{75464bb1-71e6-44be-9c9c-b37e01aa3bf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\03.Effect_Hit">
+      <UniqueIdentifier>{0ab87b89-ba1d-4dcc-9e61-416be34b83ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\04.SmashEffect">
+      <UniqueIdentifier>{28bc2ee0-cf45-4823-8583-ce3f87677300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\02.MapObject_List\Fire">
+      <UniqueIdentifier>{9dd52f29-e0ca-43af-a8d0-a6275cc47aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\05.ShockWave">
+      <UniqueIdentifier>{e5600031-948e-48c1-a4c0-1138bae4d336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\06.Effect\06.HandEffect">
+      <UniqueIdentifier>{3fcc2195-02f2-4c54-bd4f-25b49c12ed7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Static\SoundMgr">
+      <UniqueIdentifier>{4757a1f8-c318-4999-9008-42a80a4d6bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Gameobject\For.Stage\03.UI\05.Clear_UI">
+      <UniqueIdentifier>{dc923ce3-da8b-4cf0-8941-d3544969757d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\ZecallionIndex.txt" />
+    <Text Include="..\ArishaIndex.txt" />
+    <Text Include="..\기획서.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Client.h">
+      <Filter>99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Defines.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\MainApp.h">
+      <Filter>00.MainApp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Constant.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Scene_Logo.h">
+      <Filter>01.Scene\00.Scene_Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Back_Logo.h">
+      <Filter>02.Gameobject\For.Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Scene_Stage.h">
+      <Filter>01.Scene\01.Scene_Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Loading.h">
+      <Filter>01.Scene\99.Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Player.h">
+      <Filter>02.Gameobject\For.Stage\04.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Terrain.h">
+      <Filter>02.Gameobject\For.Stage\01.Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Effect.h">
+      <Filter>02.Gameobject\For.Stage\06.Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\UI.h">
+      <Filter>02.Gameobject\For.Stage\03.UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\SkyBox.h">
+      <Filter>02.Gameobject\For.Stage\00.SkyBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Map_Object.h">
+      <Filter>02.Gameobject\For.Stage\02.MapObject_List\MapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Map_Object_List.h">
+      <Filter>02.Gameobject\For.Stage\02.MapObject_List</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\MyMouse.h">
+      <Filter>02.Gameobject\For.Static\MyMouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Dynamic_Camera.h">
+      <Filter>02.Gameobject\For.Static\Dynamic_Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Struct.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Zecallion.h">
+      <Filter>02.Gameobject\For.Stage\05.Zecallion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\ZecallionAxe.h">
+      <Filter>02.Gameobject\For.Stage\05.Zecallion\ZecallionEx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Blade.h">
+      <Filter>02.Gameobject\For.Stage\04.Player\Blade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Static_Camera.h">
+      <Filter>02.Gameobject\For.Static\Static_Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\KeyMgr.h">
+      <Filter>97.Managers\Key_Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Effect_Resonance.h">
+      <Filter>02.Gameobject\For.Stage\06.Effect\01.Player_Skill\00.Resonance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Effect_SpeedyMove.h">
+      <Filter>02.Gameobject\For.Stage\06.Effect\00.Player_Move\Effect_SpeedyMove</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Door.h">
+      <Filter>02.Gameobject\For.Stage\07.Door</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Trail_LongBlade.h">
+      <Filter>02.Gameobject\For.Stage\08.Trail\Trail_LongBlade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Effect_Blood.h">
+      <Filter>02.Gameobject\For.Stage\06.Effect\02.Effect_Blood</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Zecallion_HPBar.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\01.Zecallion_HPBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Player_HPBar.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\00.Player_HPBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Player_HPBar2.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\00.Player_HPBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Zecallion_HPBar2.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\01.Zecallion_HPBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Gaurd_UI.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\03.Gaurd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\NameCard.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\02.NameCard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\DamageScreen.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\04.DamageScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Effect_Hit.h">
+      <Filter>02.Gameobject\For.Stage\06.Effect\03.Effect_Hit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Zecallion_HPBar_Font.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\01.Zecallion_HPBar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\SmashEffect.h">
+      <Filter>02.Gameobject\For.Stage\06.Effect\04.SmashEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Fire.h">
+      <Filter>02.Gameobject\For.Stage\02.MapObject_List\Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Effect_ShockWave.h">
+      <Filter>02.Gameobject\For.Stage\06.Effect\05.ShockWave</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\HandEffect.h">
+      <Filter>02.Gameobject\For.Stage\06.Effect\06.HandEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\SoundMgr.h">
+      <Filter>02.Gameobject\For.Static\SoundMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Gaurd_UI_2.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\03.Gaurd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Headers\Clear_UI.h">
+      <Filter>02.Gameobject\For.Stage\03.UI\05.Clear_UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Client.cpp">
+      <Filter>99.Default</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>99.Default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\MainApp.cpp">
+      <Filter>00.MainApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Scene_Logo.cpp">
+      <Filter>01.Scene\00.Scene_Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Back_Logo.cpp">
+      <Filter>02.Gameobject\For.Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Scene_Stage.cpp">
+      <Filter>01.Scene\01.Scene_Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Loading.cpp">
+      <Filter>01.Scene\99.Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Player.cpp">
+      <Filter>02.Gameobject\For.Stage\04.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Terrain.cpp">
+      <Filter>02.Gameobject\For.Stage\01.Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Effect.cpp">
+      <Filter>02.Gameobject\For.Stage\06.Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\UI.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Skybox.cpp">
+      <Filter>02.Gameobject\For.Stage\00.SkyBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Map_Object.cpp">
+      <Filter>02.Gameobject\For.Stage\02.MapObject_List\MapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Map_Object_List.cpp">
+      <Filter>02.Gameobject\For.Stage\02.MapObject_List</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\MyMouse.cpp">
+      <Filter>02.Gameobject\For.Static\MyMouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Dynamic_Camera.cpp">
+      <Filter>02.Gameobject\For.Static\Dynamic_Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Zecallion.cpp">
+      <Filter>02.Gameobject\For.Stage\05.Zecallion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\ZecallionAxe.cpp">
+      <Filter>02.Gameobject\For.Stage\05.Zecallion\ZecallionEx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Blade.cpp">
+      <Filter>02.Gameobject\For.Stage\04.Player\Blade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Static_Camera.cpp">
+      <Filter>02.Gameobject\For.Static\Static_Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\KeyMgr.cpp">
+      <Filter>97.Managers\Key_Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Effect_Resonance.cpp">
+      <Filter>02.Gameobject\For.Stage\06.Effect\01.Player_Skill\00.Resonance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Effect_SpeedyMove.cpp">
+      <Filter>02.Gameobject\For.Stage\06.Effect\00.Player_Move\Effect_SpeedyMove</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Door.cpp">
+      <Filter>02.Gameobject\For.Stage\07.Door</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Trail_LongBlade.cpp">
+      <Filter>02.Gameobject\For.Stage\08.Trail\Trail_LongBlade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Effect_Blood.cpp">
+      <Filter>02.Gameobject\For.Stage\06.Effect\02.Effect_Blood</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Zecallion_HPBar.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\01.Zecallion_HPBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Player_HPBar.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\00.Player_HPBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Player_HPBar2.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\00.Player_HPBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Zecallion_HPBar2.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\01.Zecallion_HPBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Gaurd_UI.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\03.Gaurd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\NameCard.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\02.NameCard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\DamageScreen.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\04.DamageScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Effect_Hit.cpp">
+      <Filter>02.Gameobject\For.Stage\06.Effect\03.Effect_Hit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Zecallion_HPBar_Font.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\01.Zecallion_HPBar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\SmashEffect.cpp">
+      <Filter>02.Gameobject\For.Stage\06.Effect\04.SmashEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Fire.cpp">
+      <Filter>02.Gameobject\For.Stage\02.MapObject_List\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Effect_ShockWave.cpp">
+      <Filter>02.Gameobject\For.Stage\06.Effect\05.ShockWave</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\HandEffect.cpp">
+      <Filter>02.Gameobject\For.Stage\06.Effect\06.HandEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\SoundMgr.cpp">
+      <Filter>02.Gameobject\For.Static\SoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Gaurd_UI_2.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\03.Gaurd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Codes\Clear_UI.cpp">
+      <Filter>02.Gameobject\For.Stage\03.UI\05.Clear_UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Client.ico">
+      <Filter>99.Default</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>99.Default</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client.rc">
+      <Filter>99.Default</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_Default.fx">
+      <Filter>96.Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_Terrain.fx">
+      <Filter>96.Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_Effect.fx">
+      <Filter>96.Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_Mesh.fx">
+      <Filter>96.Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_UI.fx">
+      <Filter>96.Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_Effect_Multi.fx">
+      <Filter>96.Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_MapObject.fx">
+      <Filter>96.Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
