@@ -32,7 +32,8 @@ CMainApp::~CMainApp()
 
 HRESULT CMainApp::Ready_MainApp(void)
 {
-	if (FAILED(Ready_DefaultSetting(Engine::CGraphic_Device::MODE_FULL, g_iBackCX, g_iBackCY)))
+	// Ã¢¸ðµå
+	if (FAILED(Ready_DefaultSetting(Engine::CGraphic_Device::MODE_WIN/*MODE_FULL*/, g_iBackCX, g_iBackCY)))
 		return E_FAIL;
 
 	if (FAILED(Ready_StaticComponent()))
