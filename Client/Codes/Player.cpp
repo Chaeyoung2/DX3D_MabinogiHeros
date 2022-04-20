@@ -289,7 +289,8 @@ void CPlayer::Check_KeyInput(const _float & fTimeDelta)
 	//  	}
 
 	//////////////////// Basic Movements. (Animation)
-	if (CInput_Device::Get_Instance()->Get_DIKState(DIK_W) && (m_eCurrentState != Player_Attack1 && m_eCurrentState != Player_Attack2 && m_eCurrentState != Player_Attack3))
+	if (CInput_Device::Get_Instance()->Get_DIKState(DIK_W) && 
+		(m_eCurrentState != Player_Attack1 && m_eCurrentState != Player_Attack2 && m_eCurrentState != Player_Attack3))
 	{
 		_vec3		vDir = *m_pTransCom->Get_Infomation(CTransform::INFO_LOOK);
 
@@ -1058,9 +1059,6 @@ void CPlayer::Update_FollowingCollision()
 	_float fZecallion_GetTrackPosition = pZecallion_Mesh->Get_TrackPosition();
 	_int iZecallionIdx = pZecallion_Mesh->Get_AnimationIdx();
 
-	// 	system("cls");
-	// 	cout << fZecallion_GetTrackPosition << endl;
-	// 	cout << iZecallionIdx << endl;
 
 	// 보스 Axe - 플레이어 Front
 	if (m_pCollisionCom_Front->Collision_OBB(pZecallion_Axe) && m_bIsPermitted_Collision_WithAxe == true)
@@ -1075,16 +1073,22 @@ void CPlayer::Update_FollowingCollision()
 //			m_pSoundMgr->PlaySound(L"arisha_hurt_weak_01.wav", CHANNEL_PLAYER_DAMAGE);
 			m_pMeshCom->Set_AnimationSet(m_eCurrentState, m_MagicNum);
 			m_bIsPermitted_Collision_WithAxe = false;
-			m_pInformationCom->HPMinus(fAtt);
+			if (m_pInformationCom->Get_ObjInfo().fHP <= 0) {
+			}
+			else
+				m_pInformationCom->HPMinus(fAtt);
 		}
 		if (fZecallion_GetTrackPosition >= 1.1 && fZecallion_GetTrackPosition <= 3.3 && iZecallionIdx == 2) // attack_Combo_1
 		{
 			m_eCurrentState = Player_Damage_middle_front_begin;
-//			m_pSoundMgr->PlaySound(L"arisha_hurt_medium_01.wav", CHANNEL_PLAYER_DAMAGE);
+			m_pSoundMgr->PlaySound(L"arisha_hurt_medium_01.wav", CHANNEL_PLAYER_DAMAGE);
 			m_pMeshCom->Set_AnimationSet(m_eCurrentState, m_MagicNum);
 			m_bIsPermitted_Collision_WithAxe = false;
 			m_bBeingDamagedMiddleFront = true;
-			m_pInformationCom->HPMinus(fAtt);
+			if (m_pInformationCom->Get_ObjInfo().fHP <= 0) {
+			}
+			else
+				m_pInformationCom->HPMinus(fAtt);
 		}
 		if (((fZecallion_GetTrackPosition >= 2.8 && fZecallion_GetTrackPosition <= 3.5) || (fZecallion_GetTrackPosition >= 5.3 && fZecallion_GetTrackPosition <= 7.5))
 			&& iZecallionIdx == 3) // attack_DoubleMash
@@ -1092,7 +1096,10 @@ void CPlayer::Update_FollowingCollision()
 			m_eCurrentState = Player_Damage_middle_front_begin;
 			m_pMeshCom->Set_AnimationSet(m_eCurrentState, m_MagicNum);
 			m_bIsPermitted_Collision_WithAxe = false;
-			m_pInformationCom->HPMinus(fAtt * 1.5f);
+			if (m_pInformationCom->Get_ObjInfo().fHP <= 0) {
+			}
+			else
+				m_pInformationCom->HPMinus(fAtt);
 			Create_UI();
 		}
 
