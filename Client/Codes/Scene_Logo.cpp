@@ -62,10 +62,11 @@ _int CScene_Logo::LastUpdate_Scene(const _float & fTimeDelta)
 
 	if (CInput_Device::Get_Instance()->Get_DIKState(DIK_RETURN) & 0x80)
 	{
-		g_iScene = 1;
 
 		if (false == m_pLoading->Get_Finish())
 			return iExitCode;
+
+		g_iScene = 1;
 
 		CScene_Stage*	pScene_Stage = CScene_Stage::Create(m_pGraphicDev, SCENE_STATIC, L"Component_Renderer");
 		if (nullptr == pScene_Stage)
