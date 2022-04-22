@@ -83,8 +83,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (FAILED(pTimer_Manager->Add_Timer(L"Timer_60")))
 		return FALSE;
 
-	if (FAILED(pTimer_Manager->Add_Timer(L"Timer_200")))
-		return FALSE;
+	//if (FAILED(pTimer_Manager->Add_Timer(L"Timer_200")))
+	//	return FALSE;
 
 
 	// CFrame dmf aksemfwk.
@@ -94,8 +94,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (FAILED(pFrame_Manager->Add_Frame(L"Frame_60", 60.0f)))
 		return FALSE;
 
-	if (FAILED(pFrame_Manager->Add_Frame(L"Frame_200", 200.0f)))
-		return FALSE;
+	//if (FAILED(pFrame_Manager->Add_Frame(L"Frame_200", 200.0f)))
+	//	return FALSE;
 
 	CInput_Device::Get_Instance()->Ready_Input_Device(g_hInst, g_hWnd);
 
@@ -128,6 +128,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			{			
 
 				CInput_Device::Get_Instance()->Invalidate_InputDev_State();
+
 				pTimer_Manager->Compute_TimeDelta(L"Timer_60");
 
 				_float		fTimeDelta_60 = pTimer_Manager->Get_TimeDelta(L"Timer_60");
@@ -136,16 +137,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 				if (iExitCode & 0x80000000)
 					break;
+
 				pMainApp->Render_MainApp();		
 			}
 
-			// 1초에 200번만 트루리턴
-			if (true == pFrame_Manager->Permit_Call(L"Frame_200", fTimeDelta_Default))
-			{
-				pTimer_Manager->Compute_TimeDelta(L"Timer_200");
+			//// 1초에 200번만 트루리턴
+			//if (true == pFrame_Manager->Permit_Call(L"Frame_200", fTimeDelta_Default))
+			//{
+			//	pTimer_Manager->Compute_TimeDelta(L"Timer_200");
 
-				_float		fTimeDelta_200 = pTimer_Manager->Get_TimeDelta(L"Timer_200");
-			}			
+			//	_float		fTimeDelta_200 = pTimer_Manager->Get_TimeDelta(L"Timer_200");
+			//}			
 		}
 	}
 
