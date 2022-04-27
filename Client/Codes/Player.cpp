@@ -19,14 +19,14 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9 pGraphicDev)
 	, m_pRendererCom(nullptr)
 	, m_pTransCom(nullptr)
 	, m_pCollisionCom_Front(nullptr)
-	, m_pCollisionCom_Left(nullptr)
-	, m_pCollisionCom_Right(nullptr)
-	, m_pCollisionCom_Back(nullptr)
+	, m_pCollisionCom_LCalf(nullptr)
+	, m_pCollisionCom_RCalf(nullptr)
+	, m_pCollisionCom_LThigh(nullptr)
+	, m_pCollisionCom_RThigh(nullptr)
 	, m_pNavigationCom(nullptr)
 	, m_pShaderCom(nullptr)
 	, m_pKeyManager(CKeyMgr::GetInstance())
 	, m_pSoundMgr(CSoundMgr::GetInstance())
-/*	, m_pSoundMgr(CSoundMgr::GetInstance())*/
 {
 	m_MagicNum = 0.3;
 }
@@ -39,14 +39,20 @@ HRESULT CPlayer::Ready_GameObject(void)
 	m_pTransCom->Set_Infomation(CTransform::INFO_POSITION, &_vec3(35.0f, 0.0f, 15.f));
 	m_pTransCom->Scaling(&_vec3(0.05f, 0.05f, 0.05f));
 
-	// 	m_pTransCom_Back->Set_Infomation(CTransform::INFO_POSITION, &_vec3(3.f, 15.0f, 3.f));
-	// //	m_pTransCom_Back->Scaling(&_vec3(0.05f, 0.05f, 0.05f));
-	// 	m_pTransCom_Front->Set_Infomation(CTransform::INFO_POSITION, &_vec3(3.f, 15.0f, 3.f));
-	// //	m_pTransCom_Front->Scaling(&_vec3(0.05f, 0.05f, 0.05f));
-	// 	m_pTransCom_Left->Set_Infomation(CTransform::INFO_POSITION, &_vec3(3.f, 15.0f, 3.f));
-	// //	m_pTransCom_Left->Scaling(&_vec3(0.05f, 0.05f, 0.05f));
-	// 	m_pTransCom_Right->Set_Infomation(CTransform::INFO_POSITION, &_vec3(3.f, 15.0f, 3.f));
-	// //	m_pTransCom_Right->Scaling(&_vec3(0.05f, 0.05f, 0.05f));
+	m_pTransCom_Front->Set_Infomation(CTransform::INFO_POSITION, &_vec3(0.f, 0.f, 0.f));
+	m_pTransCom_Front->Scaling(&_vec3(1.0f, 1.0f, 1.0f));
+
+	m_pTransCom_LCalf->Set_Infomation(CTransform::INFO_POSITION, &_vec3(0.f, 0.f, 0.f));
+	m_pTransCom_LCalf->Scaling(&_vec3(1.0f, 1.0f, 1.0f));
+
+	m_pTransCom_RCalf->Set_Infomation(CTransform::INFO_POSITION, &_vec3(0.f, 0.f, 0.f));
+	m_pTransCom_RCalf->Scaling(&_vec3(1.0f, 1.0f, 1.0f));
+
+	m_pTransCom_LThigh->Set_Infomation(CTransform::INFO_POSITION, &_vec3(0.f, 0.f, 0.f));
+	m_pTransCom_LThigh->Scaling(&_vec3(1.0f, 1.0f, 1.0f));
+
+	m_pTransCom_RThigh->Set_Infomation(CTransform::INFO_POSITION, &_vec3(0.f, 0.f, 0.f));
+	m_pTransCom_RThigh->Scaling(&_vec3(1.0f, 1.0f, 1.0f));
 
 	m_fSpeed = 7.5f;
 	m_fOriSpeed = m_fSpeed;
@@ -106,15 +112,13 @@ _int CPlayer::Update_GameObject(const _float & fTimeDelta)
 	m_pTransCom->SetUpHeight_OnBuffer(pBuffer->Get_VertexPos(), get<0>(BufferInfo), get<1>(BufferInfo), get<2>(BufferInfo));
 
 
-	// 구 콜라이더 pos 업데이트.
-	m_pCollisionCom_Back->Update_SpherePos(*m_pTransCom_Back->Get_Infomation(CTransform::INFO_POSITION));
-
 	// 월드 행렬 업데이트.
 	m_pTransCom->Invalidate_Worldmatrix();
-	m_pTransCom_Back->Invalidate_Worldmatrix();
-	// 	m_pTransCom_Right->Invalidate_Worldmatrix();
-	// 	m_pTransCom_Left->Invalidate_Worldmatrix();
-	//	m_pTransCom_Front->Invalidate_Worldmatrix();
+	m_pTransCom_Front->Invalidate_Worldmatrix();
+	m_pTransCom_RCalf->Invalidate_Worldmatrix(); 
+	m_pTransCom_LCalf->Invalidate_Worldmatrix();
+	m_pTransCom_RThigh->Invalidate_Worldmatrix();
+	m_pTransCom_LThigh->Invalidate_Worldmatrix();
 
 	// 각 뼈들 월드 행렬 업데이트.
 	Update_BoneMatrix();
@@ -201,6 +205,9 @@ _int CPlayer::LastUpdate_GameObject(const _float & fTimeDelta)
 	// 충돌 검사.
 	Update_FollowingCollision();
 
+	//const _matrix* matTransSParent = m_pTransCom_Front->Get_ParentMatrix_ForCollisionBox();
+	//m_pCollisionCom_Front->Update_SpherePos(*((_vec3*)&matTransSParent->m[3][0]));
+
 	return _int();
 }
 
@@ -226,15 +233,19 @@ void CPlayer::Render_GameObject(void)
 
 	if (g_bShowingCollider)
 	{
-		m_pCollisionCom_Whole->Render_Collider();
-		m_pTransCom_Front->SetUp_OnGraphicDev();
-		m_pCollisionCom_Front->Render_Collider();
+		//m_pTransCom_Front->SetUp_OnGraphicDev();
 		// 		m_pTransCom_Left->SetUp_OnGraphicDev();
-		// 		m_pCollisionCom_Left->Render_Collider();
 		// 		m_pTransCom_Right->SetUp_OnGraphicDev();
-		// 		m_pCollisionCom_Right->Render_Collider();
-		m_pTransCom_Back->SetUp_OnGraphicDev();
-		m_pCollisionCom_Back->Render_Collider();
+		//m_pTransCom_Back->SetUp_OnGraphicDev();
+		//m_pCollisionCom_Whole->Render_Collider();
+		m_pCollisionCom_Front->Render_Collider();
+		m_pCollisionCom_LCalf->Render_Collider();
+		m_pCollisionCom_RCalf->Render_Collider();
+		m_pCollisionCom_LThigh->Render_Collider();
+		m_pCollisionCom_RThigh->Render_Collider();
+		//m_pCollisionCom_Left->Render_Collider();
+		//m_pCollisionCom_Right->Render_Collider();
+		//m_pCollisionCom_Back->Render_Collider();
 		//m_pCollisionCom_Sphere->Render_Collider();
 	}
 	if (g_bShowingNaviMesh)
@@ -665,18 +676,27 @@ void CPlayer::Set_MagicNum_InState()
 }
 
 void CPlayer::Set_BoneMatrix_WorldMatrix()
-{
+{/*
 	m_pBoneMatrix_Back_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_Spine2");
-	m_pWorldMatrix_Back_Parent = m_pTransCom->Get_WorldMatrix();
+	m_pWorldMatrix_Back_Parent = m_pTransCom->Get_WorldMatrix();*/
 
 	m_pBoneMatrix_Front_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_R_Breast");
 	m_pWorldMatrix_Front_Parent = m_pTransCom->Get_WorldMatrix();
 
-	m_pBoneMatrix_Left_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_L_UpperArm01");
-	m_pWorldMatrix_Left_Parent = m_pTransCom->Get_WorldMatrix();
+	//m_pBoneMatrix_Left_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_L_UpperArm01");
+	//m_pWorldMatrix_Left_Parent = m_pTransCom->Get_WorldMatrix();
 
-	m_pBoneMatrix_Right_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_R_UpperArm01");
-	m_pWorldMatrix_Right_Parent = m_pTransCom->Get_WorldMatrix();
+	//m_pBoneMatrix_Right_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_R_UpperArm01");
+	//m_pWorldMatrix_Right_Parent = m_pTransCom->Get_WorldMatrix();
+
+	m_pBoneMatrix_RThigh_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_R_Thigh");
+	m_pWorldMatrix_RThigh_Parent = m_pTransCom->Get_WorldMatrix();
+	m_pBoneMatrix_LThigh_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_L_Thigh");
+	m_pWorldMatrix_LThigh_Parent = m_pTransCom->Get_WorldMatrix();
+	m_pBoneMatrix_RCalf_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_R_Calf");
+	m_pWorldMatrix_RCalf_Parent = m_pTransCom->Get_WorldMatrix();
+	m_pBoneMatrix_LCalf_Parent = m_pMeshCom->Get_BoneMatrix("ValveBiped_Bip01_L_Calf");
+	m_pWorldMatrix_LCalf_Parent = m_pTransCom->Get_WorldMatrix();
 
 }
 
@@ -705,7 +725,7 @@ void CPlayer::Move_Speed(const _float & fTimeDelta)
 	}
 	else
 	{
-		m_fSpeed = m_fOriSpeed * 2.f;
+		m_fSpeed = m_fOriSpeed * 1.5f;
 	}
 
 	m_pTransCom->Go_Staight(m_fSpeed * fTimeDelta);
@@ -989,10 +1009,14 @@ void CPlayer::Move_InAnimation(const _float & fTimeDelta)
 
 void CPlayer::Update_BoneMatrix()
 {
-	m_pTransCom_Left->Set_Parent((*m_pBoneMatrix_Left_Parent) * (*m_pTransCom->Get_WorldMatrix()));
-	m_pTransCom_Right->Set_Parent((*m_pBoneMatrix_Right_Parent) * (*m_pTransCom->Get_WorldMatrix()));
-	m_pTransCom_Back->Set_Parent((*m_pBoneMatrix_Back_Parent) * (*m_pTransCom->Get_WorldMatrix()));
+	//m_pTransCom_Left->Set_Parent((*m_pBoneMatrix_Left_Parent) * (*m_pTransCom->Get_WorldMatrix()));
+	//m_pTransCom_Right->Set_Parent((*m_pBoneMatrix_Right_Parent) * (*m_pTransCom->Get_WorldMatrix()));
+	//m_pTransCom_Back->Set_Parent((*m_pBoneMatrix_Back_Parent) * (*m_pTransCom->Get_WorldMatrix()));
 	m_pTransCom_Front->Set_Parent((*m_pBoneMatrix_Front_Parent) * (*m_pTransCom->Get_WorldMatrix()));
+	m_pTransCom_LCalf->Set_Parent((*m_pBoneMatrix_LCalf_Parent) * (*m_pTransCom->Get_WorldMatrix()));
+	m_pTransCom_RCalf->Set_Parent((*m_pBoneMatrix_RCalf_Parent) * (*m_pTransCom->Get_WorldMatrix()));
+	m_pTransCom_LThigh->Set_Parent((*m_pBoneMatrix_LThigh_Parent) * (*m_pTransCom->Get_WorldMatrix()));
+	m_pTransCom_RThigh->Set_Parent((*m_pBoneMatrix_RThigh_Parent) * (*m_pTransCom->Get_WorldMatrix()));
 
 
 	//  	_vec3 vPlayerPosition = *m_pTransCom->Get_Infomation(CTransform::INFO_POSITION);
@@ -1004,54 +1028,6 @@ void CPlayer::Update_BoneMatrix()
 
 void CPlayer::Update_FollowingCollision()
 {
-	// sphere 정보에 플레이어 position 세팅.
-	//m_pCollisionCom_Back->Update_SpherePos(*m_pTransCom->Get_Infomation(CTransform::INFO_POSITION));
-	const _matrix* matTransSParent = m_pTransCom_Back->Get_ParentMatrix_ForCollisionBox();
-	m_pCollisionCom_Back->Update_SpherePos(*((_vec3*)&matTransSParent->m[3][0]));
-	// 보스 Sphere - 플레이어 Sphere
-	// 구충돌 실패함 ..ㅜ ㅜ
-	// 	CCollision* pBossCollision_Front = (CCollision*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Collision_Front", 0);
-	// 	if (m_pCollisionCom_Back->Collision_Sphere(pBossCollision_Front))
-	// 	{
-	// 		m_bIsPermitted_OBB_DependingOnWholeSphere = true;
-	// 	}
-	// 	else
-	// 		m_bIsPermitted_OBB_DependingOnWholeSphere = false;
-
-
-	// 보스 Foot - 플레이어 Whole
-	//	CCollision* pBossCollision_Foot = (CCollision*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Collision_Foot", 0);
-	//
-	//	if (m_pCollisionCom_Whole->Collision_OBB(pBossCollision_Foot) &&
-	//		(m_eCurrentState == Player_Run || m_eCurrentState == Player_Run_Stop || m_eCurrentState == Player_Attack1 || m_eCurrentState == Player_Attack2 || m_eCurrentState == Player_Attack3))
-	//	{ 
-	//		CTransform* pBossTransform = (CTransform*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Transform", 0);
-	//		_vec3 vBossPos = *pBossTransform->Get_Infomation(CTransform::INFO_POSITION);
-	//		_vec3 vBossLook = *pBossTransform->Get_Infomation(CTransform::INFO_LOOK);
-	//
-	//		_vec3 vBossToPlayer = vBossPos - (*m_pTransCom->Get_Infomation(CTransform::INFO_POSITION));
-	//		_vec3 vPlayerToBoss = (*m_pTransCom->Get_Infomation(CTransform::INFO_POSITION)) - vBossPos;
-	//		_vec3 vPlayerLook = *m_pTransCom->Get_Infomation(CTransform::INFO_LOOK);
-	//
-	//		float fCos = D3DXVec3Dot(D3DXVec3Normalize(&vBossLook, &vBossLook), D3DXVec3Normalize(&vPlayerLook, &vPlayerLook));
-	//		float fAngle = D3DXToDegree(acosf(fCos));
-	//
-	//		float fTheta = D3DXToDegree(acosf(D3DXVec3Dot(D3DXVec3Normalize(&vPlayerToBoss, &vPlayerToBoss), D3DXVec3Normalize(&vBossToPlayer, &vBossToPlayer))));
-	//
-	////   		system("cls");
-	////   		cout << "fAngle : " << fAngle << endl;
-	//// 			cout << "fTheta : " << fTheta << endl;
-	//
-	//		if (fAngle < 60 || fAngle > 150)
-	//			m_bIsCollided_WithBoss = false;
-	//		else
-	//			m_bIsCollided_WithBoss = true;
-	//	}
-	//	else
-	//	{
-	//		m_bIsCollided_WithBoss = false;
-	//	}
-
 	// 보스 - 플레이어 
 	CCollision* pZecallion_Axe = (CCollision*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Collision_Axe", 1);
 	CCollision* pZecallion_LeftHand = (CCollision*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Collision_LeftHand", 0);
@@ -1077,6 +1053,7 @@ void CPlayer::Update_FollowingCollision()
 			}
 			else
 				m_pInformationCom->HPMinus(fAtt);
+			Create_UI();
 		}
 		if (fZecallion_GetTrackPosition >= 1.1 && fZecallion_GetTrackPosition <= 3.3 && iZecallionIdx == 2) // attack_Combo_1
 		{
@@ -1089,6 +1066,7 @@ void CPlayer::Update_FollowingCollision()
 			}
 			else
 				m_pInformationCom->HPMinus(fAtt);
+			Create_UI();
 		}
 		if (((fZecallion_GetTrackPosition >= 2.8 && fZecallion_GetTrackPosition <= 3.5) || (fZecallion_GetTrackPosition >= 5.3 && fZecallion_GetTrackPosition <= 7.5))
 			&& iZecallionIdx == 3) // attack_DoubleMash
@@ -1129,6 +1107,57 @@ void CPlayer::Update_FollowingCollision()
 		}
 	}
 
+	// 보스 Axe - 플레이어 RThigh
+	if ( (m_pCollisionCom_RThigh->Collision_OBB(pZecallion_Axe) || m_pCollisionCom_RCalf->Collision_OBB(pZecallion_Axe) 
+		|| m_pCollisionCom_LThigh->Collision_OBB(pZecallion_Axe) || m_pCollisionCom_LCalf->Collision_OBB(pZecallion_Axe))
+		&& m_bIsPermitted_Collision_WithAxe == true)
+	{
+		CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Information", 0);
+		OBJ_INFO tInfo = pPlayerInformation->Get_ObjInfo();
+		_float fAtt = tInfo.fAtt;
+
+		if (fZecallion_GetTrackPosition >= 3.5 && fZecallion_GetTrackPosition <= 4.4 && iZecallionIdx == 1) // attack_Combo_0
+		{
+			m_eCurrentState = Player_Damage_light_front;
+			//			m_pSoundMgr->PlaySound(L"arisha_hurt_weak_01.wav", CHANNEL_PLAYER_DAMAGE);
+			m_pMeshCom->Set_AnimationSet(m_eCurrentState, m_MagicNum);
+			m_bIsPermitted_Collision_WithAxe = false;
+			if (m_pInformationCom->Get_ObjInfo().fHP <= 0) {
+			}
+			else
+				m_pInformationCom->HPMinus(fAtt);
+			Create_UI();
+		}
+		if (fZecallion_GetTrackPosition >= 1.1 && fZecallion_GetTrackPosition <= 3.3 && iZecallionIdx == 2) // attack_Combo_1
+		{
+			m_eCurrentState = Player_Damage_middle_front_begin;
+			m_pSoundMgr->PlaySound(L"arisha_hurt_medium_01.wav", CHANNEL_PLAYER_DAMAGE);
+			m_pMeshCom->Set_AnimationSet(m_eCurrentState, m_MagicNum);
+			m_bIsPermitted_Collision_WithAxe = false;
+			m_bBeingDamagedMiddleFront = true;
+			if (m_pInformationCom->Get_ObjInfo().fHP <= 0) {
+			}
+			else
+				m_pInformationCom->HPMinus(fAtt);
+			Create_UI();
+		}
+		if (((fZecallion_GetTrackPosition >= 2.8 && fZecallion_GetTrackPosition <= 3.5) || (fZecallion_GetTrackPosition >= 5.3 && fZecallion_GetTrackPosition <= 7.5))
+			&& iZecallionIdx == 3) // attack_DoubleMash
+		{
+			m_eCurrentState = Player_Damage_middle_front_begin;
+			m_pMeshCom->Set_AnimationSet(m_eCurrentState, m_MagicNum);
+			m_bIsPermitted_Collision_WithAxe = false;
+			if (m_pInformationCom->Get_ObjInfo().fHP <= 0) {
+			}
+			else
+				m_pInformationCom->HPMinus(fAtt);
+			Create_UI();
+		}
+
+
+	}
+
+
 }
 
 HRESULT CPlayer::Ready_Component(void)
@@ -1156,25 +1185,31 @@ HRESULT CPlayer::Ready_Component(void)
 	pComponent = m_pTransCom_Front = (CTransform*)m_pComponent_Manager->Clone_Component(SCENE_STATIC, L"Component_Transform");
 	if (nullptr == pComponent)
 		return E_FAIL;
-	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform", pComponent));
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform_Front", pComponent));
 	pComponent->AddRef();
-	// For.Com_Transform_Back
-	pComponent = m_pTransCom_Back = (CTransform*)m_pComponent_Manager->Clone_Component(SCENE_STATIC, L"Component_Transform");
+	// For.Com_Transform_LCalf
+	pComponent = m_pTransCom_LCalf = (CTransform*)m_pComponent_Manager->Clone_Component(SCENE_STATIC, L"Component_Transform");
 	if (nullptr == pComponent)
 		return E_FAIL;
-	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform", pComponent));
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform_LCalf", pComponent));
 	pComponent->AddRef();
-	// For.Com_Transform_Left
-	pComponent = m_pTransCom_Left = (CTransform*)m_pComponent_Manager->Clone_Component(SCENE_STATIC, L"Component_Transform");
+	// For.Com_Transform_RCalf
+	pComponent = m_pTransCom_RCalf = (CTransform*)m_pComponent_Manager->Clone_Component(SCENE_STATIC, L"Component_Transform");
 	if (nullptr == pComponent)
 		return E_FAIL;
-	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform", pComponent));
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform_RCalf", pComponent));
 	pComponent->AddRef();
-	// For.Com_Transform_Right
-	pComponent = m_pTransCom_Right = (CTransform*)m_pComponent_Manager->Clone_Component(SCENE_STATIC, L"Component_Transform");
+	// For.Com_Transform_LThigh
+	pComponent = m_pTransCom_LThigh = (CTransform*)m_pComponent_Manager->Clone_Component(SCENE_STATIC, L"Component_Transform");
 	if (nullptr == pComponent)
 		return E_FAIL;
-	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform", pComponent));
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform_LThigh", pComponent));
+	pComponent->AddRef();
+	// For.Com_Transform_RThigh
+	pComponent = m_pTransCom_RThigh = (CTransform*)m_pComponent_Manager->Clone_Component(SCENE_STATIC, L"Component_Transform");
+	if (nullptr == pComponent)
+		return E_FAIL;
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Transform_RThigh", pComponent));
 	pComponent->AddRef();
 
 
@@ -1185,52 +1220,42 @@ HRESULT CPlayer::Ready_Component(void)
 	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Mesh", pComponent));
 	pComponent->AddRef();
 
-	// For.Com_Collision --> Whole
-	pComponent = m_pCollisionCom_Whole = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
-	if (nullptr == pComponent)
-		return E_FAIL;
-	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision_Whole", pComponent));
-	pComponent->AddRef();
-	m_pCollisionCom_Whole->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom, 0, _vec3(1.f, 2.5f, 2.3f), _vec3(0.f, -100.f, 0.f));
 	// For.Com_Collision --> Front
 	pComponent = m_pCollisionCom_Front = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
 	if (nullptr == pComponent)
 		return E_FAIL;
 	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision_Front", pComponent));
 	pComponent->AddRef();
-	m_pCollisionCom_Front->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_Front, 0, _vec3(0.6f, 1.5f, 4.5f), _vec3(0.f, -90.f, 0.f));
-	// For.Com_Collision --> Back
-	pComponent = m_pCollisionCom_Back = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
+	m_pCollisionCom_Front->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_Front, 0, _vec3(0.3f, 0.7f, 2.5f), _vec3(0.f, -40.f, 0.f));
+	//For.Com_Collision --> LCalf
+	pComponent = m_pCollisionCom_LCalf = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
 	if (nullptr == pComponent)
 		return E_FAIL;
-	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision_Back", pComponent));
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision_LCalf", pComponent));
 	pComponent->AddRef();
-	m_pCollisionCom_Back->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_Back, 0, _vec3(0.3f, 0.7f, 0.4f), _vec3(0.f, -37.f, -5.f));
-	// 	m_tSphereInfo_Whole.fRadius = 50.f; m_tSphereInfo_Whole.iSlices = 10; m_tSphereInfo_Whole.iStacks = 10; m_tSphereInfo_Whole.vCenterPos = *m_pTransCom_Front->Get_Infomation(CTransform::INFO_POSITION);
-	// 	m_pCollisionCom_Back->SetUp_Collision_Sphere(CCollision::TYPE_SPHERE, m_pMeshCom, m_pTransCom_Back, 0, m_tSphereInfo_Whole);
-
-	// For.Com_Collision --> Left
-	pComponent = m_pCollisionCom_Left = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
+	m_pCollisionCom_LCalf->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_LCalf, 0, _vec3(0.4f, 0.2f, 0.4f), _vec3(8.f, -11.f, 0.f));
+	//For.Com_Collision --> RCalf
+	pComponent = m_pCollisionCom_RCalf = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
 	if (nullptr == pComponent)
 		return E_FAIL;
-	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision", pComponent));
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision_RCalf", pComponent));
 	pComponent->AddRef();
-	m_pCollisionCom_Left->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_Left, 0, _vec3(0.3f, 0.2f, 0.4f), _vec3(0.f, -8.f, 0.f));
-	// For.Com_Collision --> Right
-	pComponent = m_pCollisionCom_Right = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
+	m_pCollisionCom_RCalf->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_RCalf, 0, _vec3(0.4f, 0.2f, 0.4f), _vec3(8.f, -11.f, 0.f));
+	//For.Com_Collision --> LThigh
+	pComponent = m_pCollisionCom_LThigh = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
 	if (nullptr == pComponent)
 		return E_FAIL;
-	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision", pComponent));
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision_LThigh", pComponent));
 	pComponent->AddRef();
-	m_pCollisionCom_Right->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_Right, 0, _vec3(0.3f, 0.2f, 0.4f), _vec3(0.f, -10.f, 0.f));
+	m_pCollisionCom_LThigh->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_LThigh, 0, _vec3(0.3f, 0.3f, 0.5f), _vec3(8.f, -16.f, 0.f));
+	//For.Com_Collision --> RThigh
+	pComponent = m_pCollisionCom_RThigh = (CCollision*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision");
+	if (nullptr == pComponent)
+		return E_FAIL;
+	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision_RThigh", pComponent));
+	pComponent->AddRef();
+	m_pCollisionCom_RThigh->SetUp_Collision_Ex(CCollision::TYPE_OBB, m_pMeshCom, m_pTransCom_RThigh, 0, _vec3(0.3f, 0.3f, 0.5f), _vec3(8.f, -16.f, 0.f));
 
-
-	// For.Com_Collision_Sphere
-	// 	pComponent = m_pCollisionCom_Sphere = (CCollision_Sphere*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Collision_Sphere");
-	// 	if (nullptr == pComponent)
-	// 		return E_FAIL;
-	// 	m_mapComponent.insert(CGameObject::MAPCOMPONENT::value_type(L"Com_Collision", pComponent));
-	// 	pComponent->AddRef();
 
 	// For.Com_Shader
 	pComponent = m_pShaderCom = (CShader*)m_pComponent_Manager->Clone_Component(SCENE_STAGE, L"Component_Shader_Mesh");
@@ -1274,15 +1299,16 @@ _ulong CPlayer::Free(void)
 	Engine::Safe_Release(m_pRendererCom);
 	Engine::Safe_Release(m_pTransCom);
 	Engine::Safe_Release(m_pTransCom_Front);
-	Engine::Safe_Release(m_pTransCom_Left);
-	Engine::Safe_Release(m_pTransCom_Right);
-	Engine::Safe_Release(m_pTransCom_Back);
+	Engine::Safe_Release(m_pTransCom_LCalf);
+		Engine::Safe_Release(m_pTransCom_RCalf);
+		Engine::Safe_Release(m_pTransCom_LThigh);
+		Engine::Safe_Release(m_pTransCom_RThigh);
 	Engine::Safe_Release(m_pMeshCom);
 	Engine::Safe_Release(m_pCollisionCom_Front);
-	Engine::Safe_Release(m_pCollisionCom_Left);
-	Engine::Safe_Release(m_pCollisionCom_Right);
-	Engine::Safe_Release(m_pCollisionCom_Back);
-	Engine::Safe_Release(m_pCollisionCom_Whole);
+	Engine::Safe_Release(m_pCollisionCom_LCalf);
+	Engine::Safe_Release(m_pCollisionCom_RCalf);
+	Engine::Safe_Release(m_pCollisionCom_LThigh);
+	Engine::Safe_Release(m_pCollisionCom_RThigh);
 	Engine::Safe_Release(m_pNavigationCom);
 	Engine::Safe_Release(m_pShaderCom);
 	Engine::Safe_Release(m_pInformationCom);

@@ -44,7 +44,7 @@ _int CZecallionAxe::Update_GameObject(const _float & fTimeDelta)
 
 	m_pTransCom->Set_Parent((*m_pBoneMatrix_Parent) * (*m_pWorldMatrix_Parent));
 	
-	CCollision* pTargetCollision = (CCollision*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Collision", 0);
+	CCollision* pTargetCollision = (CCollision*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Collision_Front", 0);
 
 	m_pCollision->Collision_OBB(pTargetCollision);
 

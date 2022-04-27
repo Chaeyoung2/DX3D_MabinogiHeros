@@ -62,11 +62,12 @@ private:
 	CRenderer*					m_pRendererCom = nullptr;
 	CTransform*					m_pTransCom = nullptr;	
 	CMesh_Dynamic*			m_pMeshCom = nullptr;
-	CCollision*					m_pCollisionCom_Front = nullptr; 	CCollision* 	m_pCollisionCom_Right = nullptr;
-	CCollision*					m_pCollisionCom_Left = nullptr;		CCollision*	m_pCollisionCom_Back = nullptr;
-	CCollision*					m_pCollisionCom_Whole = nullptr;
-	CTransform*					m_pTransCom_Front = nullptr; 	CTransform* 	m_pTransCom_Right = nullptr;
-	CTransform*					m_pTransCom_Left = nullptr;		CTransform*	m_pTransCom_Back = nullptr;
+	CCollision*					m_pCollisionCom_Front = nullptr; 
+	CCollision* m_pCollisionCom_RThigh = nullptr; CCollision* m_pCollisionCom_LThigh = nullptr;
+	CCollision* m_pCollisionCom_RCalf = nullptr; CCollision* m_pCollisionCom_LCalf = nullptr;
+	CTransform* m_pTransCom_Front = nullptr; 
+	CTransform* m_pTransCom_RThigh = nullptr; CTransform* m_pTransCom_LThigh = nullptr;
+	CTransform* m_pTransCom_RCalf = nullptr; CTransform* m_pTransCom_LCalf = nullptr;
 	CInformation*				m_pInformationCom = nullptr;
 	CShader*						m_pShaderCom = nullptr;
 	CNavigation*				m_pNavigationCom = nullptr;
@@ -126,14 +127,17 @@ private:
 	SPHEREINFO			m_tSphereInfo_Whole;
 	_bool						m_bIsPermitted_OBB_DependingOnWholeSphere = false;
 private: // »À matrix.
-	const _matrix*			m_pBoneMatrix_Left_Parent = nullptr;
-	const _matrix*			m_pWorldMatrix_Left_Parent = nullptr;
-	const _matrix*			m_pBoneMatrix_Right_Parent = nullptr;
-	const _matrix*			m_pWorldMatrix_Right_Parent = nullptr;
-	const _matrix*			m_pBoneMatrix_Back_Parent = nullptr;
-	const _matrix*			m_pWorldMatrix_Back_Parent = nullptr;
 	const _matrix*			m_pBoneMatrix_Front_Parent = nullptr;
-	const _matrix*			m_pWorldMatrix_Front_Parent = nullptr;
+	const _matrix* m_pBoneMatrix_LCalf_Parent = nullptr;
+	const _matrix* m_pBoneMatrix_LThigh_Parent = nullptr;
+	const _matrix* m_pBoneMatrix_RCalf_Parent = nullptr;
+	const _matrix* m_pBoneMatrix_RThigh_Parent = nullptr;
+
+	const _matrix* m_pWorldMatrix_Front_Parent = nullptr;
+	const _matrix* m_pWorldMatrix_LCalf_Parent = nullptr;
+	const _matrix* m_pWorldMatrix_LThigh_Parent = nullptr;
+	const _matrix* m_pWorldMatrix_RCalf_Parent = nullptr;
+	const _matrix* m_pWorldMatrix_RThigh_Parent = nullptr;
 private:
 	HRESULT Ready_Component(void);
 public:
