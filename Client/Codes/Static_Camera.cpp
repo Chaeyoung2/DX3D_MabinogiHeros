@@ -152,10 +152,10 @@ _int CStatic_Camera::LastUpdate_GameObject(const _float & fTimeDelta)
 			if (pTransCom_Player != nullptr)
 				vPlayer_Position = *pTransCom_Player->Get_Infomation(CTransform::INFO_POSITION);
 
-			_float fGapZ = 15.f; _float fGapY = 5.f; _float fGapX = 3.f;
+			_float fGapZ = 10.f; _float fGapY = 8.f; _float fGapX = 0.f;
 
 			m_CameraInfo.vEye = _vec3(vPlayer_Position.x, vPlayer_Position.y + fGapY, vPlayer_Position.z - fGapZ);
-			m_CameraInfo.vAt = _vec3(vPlayer_Position.x + fGapX, vPlayer_Position.y, vPlayer_Position.z);
+			m_CameraInfo.vAt = _vec3(vPlayer_Position.x + fGapX, vPlayer_Position.y + 3.f, vPlayer_Position.z);
 		}
 	}
 
@@ -191,7 +191,7 @@ _int CStatic_Camera::LastUpdate_GameObject(const _float & fTimeDelta)
 				m_vOriAtPos = m_CameraInfo.vAt;
 				m_vOriEyePos = m_CameraInfo.vEye;
 				m_bIsZecallion_StandUpFaceDown = true;
-				m_fShakeTime = 2.1f;
+				m_fShakeTime = 2.5f;
 				m_fShakePower = 0.07f;
 			}
 		}
