@@ -189,6 +189,9 @@ private:
 	_bool							m_bIsCompletedToPlaySound_GaurdEnd_Shout = false;
 
 	_bool							m_bIsCompletedToPlaySound_Clear = false;
+
+	// Á×À½
+	_bool isDead = false;
 private:
 	HRESULT Ready_Component(void);
 public:
