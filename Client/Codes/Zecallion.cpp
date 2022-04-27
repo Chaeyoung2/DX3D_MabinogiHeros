@@ -73,6 +73,9 @@ _int CZecallion::Update_GameObject(const _float & fTimeDelta)
 		}
 
 	}
+	if (isDead) {
+		return 1;
+	}
 
 
 	// 상태에 따른 사운드.
@@ -303,7 +306,7 @@ void CZecallion::Render_GameObject(void)
 		m_pCollisionCom_Left_Calf->Render_Collider();
 
 		//m_pTransCom_Foot->SetUp_OnGraphicDev();
-		m_pCollisionCom_Foot->Render_Collider();
+		//m_pCollisionCom_Foot->Render_Collider();
 	}
 
 }
@@ -330,7 +333,9 @@ void CZecallion::Check_Period_ForAnimation()
 		}
 		else if (m_eCurrentState == BOSS_DYING_BACK)
 		{
-			m_eCurrentState = BOSS_IDLE;
+			// m_eCurrentState = BOSS_IDLE;
+			// 죽었으면 사라지셈.
+			isDead = true;
 		}
 		else if (m_eCurrentState == BOSS_SPAWN) 		// SPAWN 끝났을 때 trackPosition 끝났으면! IDLE
 		{
@@ -521,7 +526,7 @@ void CZecallion::Update_FollowingCollision()
 
 	if (m_pCollisionCom_Left_Calf->Collision_OBB(pPlayer_Blade) && m_bIsPermitted_Collision_WithBlade == true)
 	{
-		if (iPlayerIdx == 14)
+		if (iPlayerIdx == 14 || iPlayerIdx == 17)
 		{
 			if (fPlayer_GetTrackPosition >= 0.4 &&  fPlayer_GetTrackPosition <= 1.4)
 				m_eCurrentState = BOSS_DAMAGE_LEFT;
@@ -531,12 +536,12 @@ void CZecallion::Update_FollowingCollision()
 			Create_Effect_Blood(CEffect_Blood::BONE_LEFT_CALF);
 			// 히트 이펙트
 			Create_Effect_Hit(CEffect_Hit::BONE_LEFT_CALF, 0);
-			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Information", 0);
+			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Information", 0);
 			OBJ_INFO tInfo = pPlayerInformation->Get_ObjInfo();
 			_float fAtt = tInfo.fAtt;
 			m_pInformationCom->HPMinus(fAtt);
 		}
-		else if (iPlayerIdx == 15)
+		else if (iPlayerIdx == 15 || iPlayerIdx == 18)
 		{
 			if (fPlayer_GetTrackPosition >= 0.25 &&  fPlayer_GetTrackPosition <= 0.7)
 				m_eCurrentState = BOSS_DAMAGE_LEFT;
@@ -546,12 +551,12 @@ void CZecallion::Update_FollowingCollision()
 			Create_Effect_Blood(CEffect_Blood::BONE_LEFT_CALF);
 			// 히트 이펙트
 			Create_Effect_Hit(CEffect_Hit::BONE_LEFT_CALF, 1);
-			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Information", 0);
+			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Information", 0);
 			OBJ_INFO tInfo = pPlayerInformation->Get_ObjInfo();
 			_float fAtt = tInfo.fAtt;
 			m_pInformationCom->HPMinus(fAtt);
 		}
-		else if (iPlayerIdx == 16)
+		else if (iPlayerIdx == 16 || iPlayerIdx == 19)
 		{
 			if (fPlayer_GetTrackPosition >= 0.4 &&  fPlayer_GetTrackPosition <= 1.1)
 				m_eCurrentState = BOSS_DAMAGE_LEFT;
@@ -561,7 +566,7 @@ void CZecallion::Update_FollowingCollision()
 			Create_Effect_Blood(CEffect_Blood::BONE_LEFT_CALF);
 			// 히트 이펙트
 			Create_Effect_Hit(CEffect_Hit::BONE_LEFT_CALF, 0);
-			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Information", 0);
+			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Information", 0);
 			OBJ_INFO tInfo = pPlayerInformation->Get_ObjInfo();
 			_float fAtt = tInfo.fAtt;
 			m_pInformationCom->HPMinus(fAtt);
@@ -571,7 +576,7 @@ void CZecallion::Update_FollowingCollision()
 
 	if (m_pCollisionCom_Right_Calf->Collision_OBB(pPlayer_Blade) && m_bIsPermitted_Collision_WithBlade == true)
 	{
-		if (iPlayerIdx == 14)
+		if (iPlayerIdx == 14 || iPlayerIdx == 17)
 		{
 			if (fPlayer_GetTrackPosition >= 0.4 &&  fPlayer_GetTrackPosition <= 1.4)
 				m_eCurrentState = BOSS_DAMAGE_RIGHT;
@@ -582,12 +587,12 @@ void CZecallion::Update_FollowingCollision()
 			// 히트 이펙트
 			Create_Effect_Hit(CEffect_Hit::BONE_LEFT_CALF, 0);
 
-			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Information", 0);
+			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Information", 0);
 			OBJ_INFO tInfo = pPlayerInformation->Get_ObjInfo();
 			_float fAtt = tInfo.fAtt;
 			m_pInformationCom->HPMinus(fAtt);
 		}
-		else if (iPlayerIdx == 15)
+		else if (iPlayerIdx == 15 || iPlayerIdx == 18)
 		{
 			if (fPlayer_GetTrackPosition >= 0.25 &&  fPlayer_GetTrackPosition <= 0.7)
 				m_eCurrentState = BOSS_DAMAGE_RIGHT;
@@ -598,12 +603,12 @@ void CZecallion::Update_FollowingCollision()
 			// 히트 이펙트
 			Create_Effect_Hit(CEffect_Hit::BONE_LEFT_CALF, 1);
 
-			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Information", 0);
+			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Information", 0);
 			OBJ_INFO tInfo = pPlayerInformation->Get_ObjInfo();
 			_float fAtt = tInfo.fAtt;
 			m_pInformationCom->HPMinus(fAtt);
 		}
-		else if (iPlayerIdx == 16)
+		else if (iPlayerIdx == 16 || iPlayerIdx == 19)
 		{
 			if (fPlayer_GetTrackPosition >= 0.4 &&  fPlayer_GetTrackPosition <= 0.6)
 				m_eCurrentState = BOSS_DAMAGE_RIGHT;
@@ -614,7 +619,7 @@ void CZecallion::Update_FollowingCollision()
 			// 히트 이펙트
 			Create_Effect_Hit(CEffect_Hit::BONE_LEFT_CALF, 0);
 
-			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Zecallion", L"Com_Information", 0);
+			CInformation* pPlayerInformation = (CInformation*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Information", 0);
 			OBJ_INFO tInfo = pPlayerInformation->Get_ObjInfo();
 			_float fAtt = tInfo.fAtt;
 			m_pInformationCom->HPMinus(fAtt);
@@ -634,14 +639,14 @@ void CZecallion::Update_Pattern_FollowingCollision(const _float& fTimeDelta)
 		return;
 
 	// 플레이어 front 충돌 박스.
-	CCollision* pPlayerCollision_Whole = (CCollision*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Collision_Whole", 0);
+	CCollision* pPlayerCollision_front = (CCollision*)CObject_Manager::Get_Instance()->Get_Component(SCENE_STAGE, L"Layer_Player", L"Com_Collision_Front", 0);
 
 
 	// 전투 모드 충돌 박스 - 플레이어 충돌 박스 OBB.
 	// 젝칼리온 전투 모드 충돌 박스로 들어가면 한번 "포효"(STANDUP_FACEDOWN)한 뒤 m_ePattern을 NONE에서 IDLE로.
 	if (m_bIsStandUpFaceDown_Completed_OnInit == false)
 	{
-		if (m_pCollisionCom_ForCombat->Collision_OBB(pPlayerCollision_Whole))
+		if (m_pCollisionCom_ForCombat->Collision_OBB(pPlayerCollision_front))
 		{
 			Create_UI(1);
 			m_eCurrentState = BOSS_STANDUP_FACEDOWN;
@@ -649,7 +654,7 @@ void CZecallion::Update_Pattern_FollowingCollision(const _float& fTimeDelta)
 		}
 	}
 
-	if (m_pCollisionCom_Foot->Collision_OBB(pPlayerCollision_Whole) &&
+	if (m_pCollisionCom_Foot->Collision_OBB(pPlayerCollision_front) &&
 		(m_ePattern == PATTERN_STALKING || m_ePattern == PATTERN_ATTACK))
 	{
 		m_bIsCollided_WithPlayerWhole = true;
